@@ -1,0 +1,337 @@
+/* 폰트 설정 */
+@font-face {
+  font-family: 'YUniverse';
+  src: url('fonts/YUniverse-B.ttf') format('truetype'),
+       url('fonts/YUniverse-B.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* 전역 스타일 */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'YUniverse', Arial, sans-serif !important;
+  margin: 0;
+  padding: 0;
+  background: url("헤더.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* 헤더 스타일 */
+header {
+  color: #f9a826 !important;
+  text-align: left;
+  padding: 10px 0;
+  font-family: 'YUniverse';
+  background: url("헤드.png") no-repeat center center;
+  background-size: 100% auto;
+  height: 150px;
+  background-position: center;
+}
+
+header .container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+header h1 {
+  margin: 0;
+  font-family: 'YUniverse';
+  font-size: 4rem;
+  color: #f9a826;
+  text-align: left;
+}
+
+side-bar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    height: 100vh;
+    width: 250px;
+    background: rgba(47, 47, 47, 0.95); /* 어두운 회색에 약간의 투명도 추가 */
+    box-shadow: 2px 0 5px rgba(0,0,0,0.3);
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    z-index: 1000;
+    padding-top: 60px;
+}
+
+.side-bar .menu {
+    padding: 20px;
+}
+
+.side-bar .menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+button.genre-btn {
+    background: rgba(70, 70, 70, 0.5); /* 버튼 배경도 약간 투명한 회색으로 */
+    color: white;
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: left;
+    white-space: nowrap;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+button.genre-btn:hover {
+    background-color: #f9a826;
+    transform: translateX(10px); /* 호버 시 살짝 오른쪽으로 이동 */
+}
+
+button.genre-btn.active {
+    background-color: #f9a826;
+}
+
+/* 오버레이 스타일 추가 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+    backdrop-filter: blur(2px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.5s;
+    z-index: 999;
+}
+
+.overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* 토글 버튼 스타일 수정 */
+.toggle-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+    z-index: 1001; /* 사이드바보다 위에 */
+}
+
+/* 각 버튼에 순차적 애니메이션 적용 */
+.side-bar button.genre-btn:nth-child(1) { transition-delay: 0.1s; }
+.side-bar button.genre-btn:nth-child(2) { transition-delay: 0.15s; }
+.side-bar button.genre-btn:nth-child(3) { transition-delay: 0.2s; }
+.side-bar button.genre-btn:nth-child(4) { transition-delay: 0.25s; }
+.side-bar button.genre-btn:nth-child(5) { transition-delay: 0.3s; }
+.side-bar button.genre-btn:nth-child(6) { transition-delay: 0.35s; }
+.side-bar button.genre-btn:nth-child(7) { transition-delay: 0.4s; }
+.side-bar button.genre-btn:nth-child(8) { transition-delay: 0.45s; }
+.side-bar button.genre-btn:nth-child(9) { transition-delay: 0.5s; }
+.side-bar button.genre-btn:nth-child(10) { transition-delay: 0.55s; }
+.side-bar button.genre-btn:nth-child(11) { transition-delay: 0.6s; }
+.side-bar button.genre-btn:nth-child(12) { transition-delay: 0.65s; }
+.side-bar button.genre-btn:nth-child(13) { transition-delay: 0.7s; }
+.side-bar button.genre-btn:nth-child(14) { transition-delay: 0.75s; }
+.side-bar button.genre-btn:nth-child(15) { transition-delay: 0.8s; }/* 컨테이너 스타일 */
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-left: 70px; /* 사이드바의 기본 너비만큼 왼쪽 여백 확보 */
+}
+
+/* 카드 스타일 */
+.card-1 {
+  position: relative;
+  width: 200px; /* 너비를 200px로 확대 */
+  height: 300px; /* 높이를 300px로 확대 */
+  transition: transform 0.5s; /* 회전 시 애니메이션 */
+  transform-style: preserve-3d;
+  cursor: pointer;
+  perspective: 1000px; /* 3D 효과를 더 잘 보이게 하기 위해 추가 */
+  margin-bottom: 20px; /* 카드 간격 추가 */
+}
+
+/* 앞면, 뒷면 스타일 */
+.front-face-1, .back-face-1 {
+  position: absolute;
+  width: 100%;  /* 앞면과 뒷면의 너비 동일 */
+  height: 100%; /* 앞면과 뒷면의 높이 동일 */
+  backface-visibility: hidden; /* 뒷면이 앞면일 때 보이지 않게 설정 */
+  transition: all 0.5s ease; /* 회전 애니메이션 */
+  border-radius: 5px; /* 앞면과 뒷면 모두 동일한 모서리 둥글기 */
+  padding: 10px; /* 동일한 여백 */
+}
+
+/* 앞면 스타일 */
+.front-face-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column; /* 영화 이미지 아래 영화 제목 배치 */
+  background-color: #f9a82666; /* 배경색 설정 */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+}
+
+.front-face-1 img {
+  width: 100%;
+  height: 100%; /* 이미지 높이를 카드에 맞춰 90%로 확대 */
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.front-face-1 h3 {
+  margin-top: 10px; /* 영화 제목과 이미지 간 간격 */
+  color: #f9a82666;
+  font-size: 1.2rem;
+}
+
+.front-face-1 img:hover {
+  box-shadow: 0 0 7px 3px rgba(173, 216, 230, 0.7);
+  transform: scale(1.05);
+}
+
+/* 뒷면 스타일 */
+.back-face-1 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9a82666;
+  color: #000;
+  transform: rotateY(180deg); /* 뒷면을 180도 회전시켜 처음에 보이지 않게 설정 */
+  text-align: center;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* 카드가 회전할 때 적용되는 효과 */
+.card-1.flip {
+  transform: rotateY(180deg);
+}
+
+/* 별점 숫자 스타일 */
+.rating-counter {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* 별점 시스템 */
+.starpoint_wrap {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.starpoint_box {
+  position: relative;
+  background: url('https://ido-archive.github.io/svc/etc/element/img/sp_star.png') 0 0 no-repeat;
+  font-size: 0;
+  width: 100px;
+  height: 18px;
+}
+
+.starpoint_box .starpoint_bg {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 18px;
+  background: url('https://ido-archive.github.io/svc/etc/element/img/sp_star.png') 0 -20px no-repeat;
+  pointer-events: none;
+}
+
+.starpoint_box .label_star {
+  display: inline-block;
+  width: 10px;
+  height: 18px;
+}
+
+.starpoint_box .star_radio {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.starpoint_box .star_radio:nth-of-type(1):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(1):checked ~ .starpoint_bg {
+  width: 10%;
+}
+
+.starpoint_box .star_radio:nth-of-type(2):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(2):checked ~ .starpoint_bg {
+  width: 20%;
+}
+
+.starpoint_box .star_radio:nth-of-type(3):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(3):checked ~ .starpoint_bg {
+  width: 30%;
+}
+
+.starpoint_box .star_radio:nth-of-type(4):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(4):checked ~ .starpoint_bg {
+  width: 40%;
+}
+
+.starpoint_box .star_radio:nth-of-type(5):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(5):checked ~ .starpoint_bg {
+  width: 50%;
+}
+
+.starpoint_box .star_radio:nth-of-type(6):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(6):checked ~ .starpoint_bg {
+  width: 60%;
+}
+
+.starpoint_box .star_radio:nth-of-type(7):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(7):checked ~ .starpoint_bg {
+  width: 70%;
+}
+
+.starpoint_box .star_radio:nth-of-type(8):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(8):checked ~ .starpoint_bg {
+  width: 80%;
+}
+
+.starpoint_box .star_radio:nth-of-type(9):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(9):checked ~ .starpoint_bg {
+  width: 90%;
+}
+
+.starpoint_box .star_radio:nth-of-type(10):hover ~ .starpoint_bg,
+.starpoint_box .star_radio:nth-of-type(10):checked ~ .starpoint_bg {
+  width: 100%;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+  .column {
+    width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .column {
+    width: 100%;
+  }
+}

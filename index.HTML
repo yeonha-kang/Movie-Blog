@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>영화 추천 및 소개</title>
+    <link rel="stylesheet" href="movie.css">  <!-- CSS 파일 연결 -->
+</head>
+<body>
+
+    <!-- 헤더 -->
+    <header>
+        <div class="container">
+            <h1>MOVIE</h1>  <!-- 페이지 제목 -->
+        </div>
+    </header>
+
+    <!-- 사이드바 -->
+<!-- 토글 버튼 추가 -->
+<button class="toggle-btn" onclick="toggleSidebar()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M3 12h18M3 6h18M3 18h18"/>
+    </svg>
+</button>
+
+<!-- 사이드바 -->
+<div class="side-bar">
+    <div class="menu">
+        <ul>
+            <button class="genre-btn active" data-genre="전체">전체</button>
+            <button class="genre-btn" data-genre="액션">액션</button>
+            <button class="genre-btn" data-genre="로맨스">로맨스</button>
+            <button class="genre-btn" data-genre="드라마">드라마</button>
+            <button class="genre-btn" data-genre="애니">애니</button>
+            <button class="genre-btn" data-genre="SF">SF</button>
+            <button class="genre-btn" data-genre="음악">음악</button>
+            <button class="genre-btn" data-genre="판타지">판타지</button>
+            <button class="genre-btn" data-genre="코미디">코미디</button>
+            <button class="genre-btn" data-genre="모험">모험</button>
+            <button class="genre-btn" data-genre="전쟁">전쟁</button>
+            <button class="genre-btn" data-genre="스릴러">스릴러</button>
+            <button class="genre-btn" data-genre="고전">고전</button>
+            <button class="genre-btn" data-genre="범죄">범죄</button>
+            <button class="genre-btn" data-genre="실화">실화</button>
+        </ul>
+    </div>
+</div>
+
+<!-- 오버레이 추가 -->
+<div class="overlay" onclick="toggleSidebar()"></div>
+
+<!-- 영화 리스트를 담는 컨테이너 -->
+<div class="container">
+    <div class="column" id="column1"></div>
+    <div class="column" id="column2"></div>
+    <div class="column" id="column3"></div>
+    <div class="column" id="column4"></div>
+    <div class="column" id="column5"></div>
+</div>
+
+<!-- JavaScript 파일 연결 -->
+<script src="movie.js"></script>
+
+</body>
+</html>
